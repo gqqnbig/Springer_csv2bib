@@ -73,8 +73,8 @@ def convert_csv2bib(filepath: str) -> bool:
     bibentries = _get_bibentries(filepath)
     p = filepath.rfind('.')
     bibfile = filepath[0:p] + ".bib"
-    for bib in bibentries:
-        with open(bibfile, 'a') as f:
+    with open(bibfile, 'a') as f:
+        for bib in bibentries:
             f.write(bib)
 
 
