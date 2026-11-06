@@ -24,14 +24,14 @@ class BibEntry(object):
         a string in .bib format entry
         """
         header = "@article{"+header_id+",\n\t"
-        author = "author = {{"+self.Authors+"}},\n\t"
-        title = "title = {{"+self.Item_Title+"}},\n\t"
-        journal_book = "journal = {{"+self.Publication_Title+"}},\n\t"
-        volume = "volume = {{"+str(self.Journal_Volume)+"}},\n\t"
-        number = "number = {{"+str(self.Journal_Issue)+"}},\n\t"
-        year = "year = {{"+str(self.Publication_Year)+"}},\n\t"
-        url = "url = {{"+str(self.URL)+"}},\n\t"
-        doi = "doi = {{"+str(self.Item_DOI)+"}},\n}\n\n"
+        author = "author = {"+self.Authors+"},\n\t"
+        title = "title = {"+self.Item_Title+"},\n\t"
+        journal_book = "journal = {"+self.Publication_Title+"},\n\t"
+        volume = "volume = {"+str(self.Journal_Volume)+"},\n\t"
+        number = "number = {"+str(self.Journal_Issue)+"},\n\t"
+        year = "year = {"+str(self.Publication_Year)+"},\n\t"
+        url = "url = {"+str(self.URL)+"},\n\t"
+        doi = "doi = {"+str(self.Item_DOI)+"},\n}\n\n"
         return header+author+title+journal_book+volume+number+year+url+doi
 
 
