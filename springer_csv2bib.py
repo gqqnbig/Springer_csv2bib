@@ -23,10 +23,21 @@ class BibEntry(object):
         Based on its members, returns
         a string in .bib format entry
         """
-        header = "@article{"+header_id+",\n\t"
-        author = "author = {"+self.Authors+"},\n\t"
-        title = "title = {"+self.Item_Title+"},\n\t"
-        journal_book = "journal = {"+self.Publication_Title+"},\n\t"
+
+        match self.Content_Type:
+            case 'Article':
+                bibEntryType = 'article'  # journal article
+                journal_book = "journal = {" + self.Publication_Title + "},\n\t"
+            case 'Conference paper':
+                bibEntryType = 'inproceedings'
+                journal_book = "booktitle = {" + self.Publication_Title + "},\n\t"
+            case _:
+                raise NotImplementedError(f'Unknown content type {self.Content_Type}')
+
+        header = "@" + bibEntryType + "{" + header_id + ",\n\t"
+        author = "author = {" + self.Authors + "},\n\t"
+        title = "title = {" + self.Item_Title + "},\n\t"
+
         volume = "volume = {"+str(self.Journal_Volume)+"},\n\t"
         number = "number = {"+str(self.Journal_Issue)+"},\n\t"
         year = "year = {"+str(self.Publication_Year)+"},\n\t"
